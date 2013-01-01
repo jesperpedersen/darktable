@@ -638,7 +638,8 @@ dt_view_image_expose(
   int32_t zoom,
   int32_t px,
   int32_t py,
-  gboolean full_preview)
+  gboolean full_preview,
+  gboolean show_information)
 {
   const double start = dt_get_wtime();
   // some performance tuning stuff, for your pleasure.
@@ -864,7 +865,7 @@ dt_view_image_expose(
     dt_mipmap_cache_read_release(darktable.mipmap_cache, &buf);
 
   const float fscale = fminf(width, height);
-  if(imgsel == imgid || full_preview)
+  if((imgsel == imgid || full_preview) && show_information)
   {
     // draw mouseover hover effects, set event hook for mouse button down!
     *image_over = DT_VIEW_DESERT;
@@ -1017,7 +1018,7 @@ dt_view_image_expose(
   }
 #endif
 
-  if(img && (zoom == 1))
+  if((img && (zoom == 1)) && show_information)
   {
     // some exif data
     cairo_set_source_rgb(cr, .7, .7, .7);
