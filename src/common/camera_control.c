@@ -21,6 +21,7 @@
 #endif
 #include "common/camera_control.h"
 #include "control/control.h"
+#include "control/signal.h"
 #include "libraw/libraw.h"
 #include <gphoto2/gphoto2-file.h>
 
@@ -256,14 +257,15 @@ static void _camera_process_job(const dt_camctl_t *c,const dt_camera_t *camera, 
         gp_camera_file_get (camera->gpcam, fp.folder , fp.name, GP_FILE_TYPE_NORMAL, destination,  c->gpcontext);
         close (handle);
 
+        dt_print (DT_DEBUG_CAMCTL,"[camera_control] remote camera capture successful\n");
+
         // Notify listerners of captured image
         _dispatch_camera_image_downloaded (c,camera,output);
+        dt_control_signal_raise(darktable.signals, DT_SIGNAL_TETHER_IMAGE_CAPTURE);
         g_free (output);
       }
       else
         dt_print (DT_DEBUG_CAMCTL,"[camera_control] capture job failed to capture image: %s\n",gp_result_as_string(res));
-
-
     }
     break;
 

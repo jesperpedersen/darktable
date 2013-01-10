@@ -46,6 +46,9 @@ int32_t dt_captured_image_import_job_run(dt_job_t *job)
 
   dt_control_backgroundjobs_progress(darktable.control, jid, 1.0);
   dt_control_backgroundjobs_destroy(darktable.control, jid);
+
+  dt_control_signal_raise(darktable.signals, DT_SIGNAL_TETHER_IMAGE_CAPTURE);
+
   return 0;
 }
 

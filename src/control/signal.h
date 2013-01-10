@@ -114,6 +114,10 @@ typedef enum dt_signal_t
     no return
     */
   DT_SIGNAL_IMAGE_IMPORT,
+  /** \brief This signal is rasied when an image is captured in tethered mode
+  no param, no returned value
+    */
+  DT_SIGNAL_TETHER_IMAGE_CAPTURE,
 
   /* do not touch !*/
   DT_SIGNAL_COUNT

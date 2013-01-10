@@ -70,6 +70,7 @@ static dt_signal_description _signal_description[DT_SIGNAL_COUNT] =
   {"dt-develop-image-changed",NULL,NULL,G_TYPE_NONE,g_cclosure_marshal_VOID__VOID,0,NULL},        // DT_SIGNAL_DEVELOP_IMAGE_CHANGE
   {"dt-control-profile-changed",NULL,NULL,G_TYPE_NONE,g_cclosure_marshal_VOID__VOID,0,NULL},               // DT_SIGNAL_CONTROL_PROFILE_CHANGED
   {"dt-image-import",NULL,NULL,G_TYPE_NONE,g_cclosure_marshal_VOID__UINT,1,uint_arg},               // DT_SIGNAL_CONTROL_PROFILE_CHANGED
+  {"dt-tether-image-capture",NULL,NULL,G_TYPE_NONE,g_cclosure_marshal_VOID__VOID,0,NULL},        // DT_SIGNAL_TETHER_IMAGE_CAPTURE
 };
 
 static  GType _signal_type;
